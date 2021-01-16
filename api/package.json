@@ -1,0 +1,28 @@
+{
+  "name": "shopping-lists-api",
+  "version": "1.0.0",
+  "description": "This is simple REST API used to maintain shopping lists",
+  "main": "index.js",
+  "scripts": {
+    "lint": "tslint -p tsconfig.json -c tslint.json",
+    "local": "serverless offline",
+    "deploy": "serverless deploy",
+    "test": "jest"
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.51",
+    "@types/jest": "^26.0.20",
+    "jest": "^26.6.3",
+    "serverless-aws-documentation": "^1.1.0",
+    "serverless-offline": "^5.12.1",
+    "serverless-plugin-typescript": "^1.1.9",
+    "ts-jest": "^26.4.4",
+    "ts-node": "^8.9.1",
+    "tslint": "^6.1.2",
+    "tslint-config-airbnb": "^5.11.2",
+    "typescript": "^3.9.7"
+  }
+}

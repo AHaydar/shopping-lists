@@ -1,0 +1,196 @@
+---
+swagger: "2.0"
+info:
+  version: "2021-01-17T07:38:35Z"
+  title: "dev-shopping-lists"
+host: "gobf8rpbvd.execute-api.us-east-1.amazonaws.com"
+basePath: "/dev"
+schemes:
+- "https"
+paths:
+  /shoppingLists:
+    get:
+      summary: "Get shopping lists"
+      description: "Get all the shopping lists"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/getShoppingListsResponse"
+    post:
+      summary: "create a shopping list"
+      description: "create a shopping list"
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "shoppingListRequestBody"
+        required: true
+        schema:
+          $ref: "#/definitions/shoppingListRequestBody"
+      responses:
+        201:
+          description: "201 response"
+    options:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+            Access-Control-Allow-Methods:
+              type: "string"
+            Access-Control-Allow-Headers:
+              type: "string"
+  /shoppingLists/{id}:
+    get:
+      summary: "Get a single shopping list"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "The id of a single shopping list"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/getShoppingListResponse"
+    put:
+      summary: "update a shopping list"
+      description: "update a shopping list"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "The id of a single shopping list"
+        required: false
+        type: "string"
+      - in: "body"
+        name: "shoppingListRequestBody"
+        required: true
+        schema:
+          $ref: "#/definitions/shoppingListRequestBody"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/getShoppingListResponse"
+    delete:
+      summary: "delete a shopping list"
+      description: "delete a shopping list"
+      consumes:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "The id of a single shopping list"
+        required: false
+        type: "string"
+      - in: "body"
+        name: "shoppingListRequestBody"
+        required: true
+        schema:
+          $ref: "#/definitions/shoppingListRequestBody"
+      responses:
+        204:
+          description: "204 response"
+    options:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+            Access-Control-Allow-Methods:
+              type: "string"
+            Access-Control-Allow-Headers:
+              type: "string"
+definitions:
+  getShoppingListResponse:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      description:
+        type: "string"
+      id:
+        type: "string"
+      items:
+        type: "array"
+        items:
+          type: "object"
+          properties:
+            unit:
+              type: "string"
+            quantity:
+              type: "number"
+            price:
+              type: "number"
+            name:
+              type: "string"
+            id:
+              type: "string"
+  shoppingListRequestBody:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      description:
+        type: "string"
+      items:
+        type: "array"
+        items:
+          type: "object"
+          properties:
+            unit:
+              type: "string"
+            quantity:
+              type: "number"
+            price:
+              type: "number"
+            name:
+              type: "string"
+            id:
+              type: "string"
+  getShoppingListsResponse:
+    type: "array"
+    items:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        description:
+          type: "string"
+        id:
+          type: "string"
+        items:
+          type: "array"
+          items:
+            type: "object"
+            properties:
+              unit:
+                type: "string"
+              quantity:
+                type: "number"
+              price:
+                type: "number"
+              name:
+                type: "string"
+              id:
+                type: "string"
