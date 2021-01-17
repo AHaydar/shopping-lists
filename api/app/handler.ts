@@ -23,12 +23,10 @@ export const getSingleShoppingList = async (event: any) => {
   return results;
 };
 
-export const createShoppingList = async () => {
+export const createOrUpdateShoppingList = async () => {
   throw new Error("Method not implemented");
 };
-export const updateShoppingList = async () => {
-  throw new Error("Method not implemented");
-};
+
 export const deleteShoppingList = async () => {
   throw new Error("Method not implemented");
 };

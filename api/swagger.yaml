@@ -1,7 +1,7 @@
 ---
 swagger: "2.0"
 info:
-  version: "2021-01-17T07:38:35Z"
+  version: "2021-01-17T17:42:20Z"
   title: "dev-shopping-lists"
 host: "gobf8rpbvd.execute-api.us-east-1.amazonaws.com"
 basePath: "/dev"
@@ -19,10 +19,12 @@ paths:
           description: "200 response"
           schema:
             $ref: "#/definitions/getShoppingListsResponse"
-    post:
-      summary: "create a shopping list"
-      description: "create a shopping list"
+    put:
+      summary: "create or update a shopping list"
+      description: "create or update a shopping list"
       consumes:
+      - "application/json"
+      produces:
       - "application/json"
       parameters:
       - in: "body"
@@ -31,8 +33,10 @@ paths:
         schema:
           $ref: "#/definitions/shoppingListRequestBody"
       responses:
-        201:
-          description: "201 response"
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/getShoppingListResponse"
     options:
       consumes:
       - "application/json"
@@ -64,45 +68,15 @@ paths:
           description: "200 response"
           schema:
             $ref: "#/definitions/getShoppingListResponse"
-    put:
-      summary: "update a shopping list"
-      description: "update a shopping list"
-      consumes:
-      - "application/json"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "id"
-        in: "path"
-        description: "The id of a single shopping list"
-        required: false
-        type: "string"
-      - in: "body"
-        name: "shoppingListRequestBody"
-        required: true
-        schema:
-          $ref: "#/definitions/shoppingListRequestBody"
-      responses:
-        200:
-          description: "200 response"
-          schema:
-            $ref: "#/definitions/getShoppingListResponse"
     delete:
       summary: "delete a shopping list"
       description: "delete a shopping list"
-      consumes:
-      - "application/json"
       parameters:
       - name: "id"
         in: "path"
         description: "The id of a single shopping list"
         required: false
         type: "string"
-      - in: "body"
-        name: "shoppingListRequestBody"
-        required: true
-        schema:
-          $ref: "#/definitions/shoppingListRequestBody"
       responses:
         204:
           description: "204 response"
@@ -152,6 +126,8 @@ definitions:
       name:
         type: "string"
       description:
+        type: "string"
+      id:
         type: "string"
       items:
         type: "array"
